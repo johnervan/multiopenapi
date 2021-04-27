@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "plugin:@next/next/recommended",
+    "plugin:prettier/recommended",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "project": "./tsconfig.json",
+    "sourceType": "module",
+    "babelOptions": {
+      "presets": [
+        "next/babel"
+      ]
+    }
+  },
+  "plugins": [
+    "prettier",
+    "jsx-a11y"
+  ],
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}
