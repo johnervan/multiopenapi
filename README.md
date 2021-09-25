@@ -3,13 +3,21 @@ This repository consists of the source code for the **Multi Open API**. It is  a
 <br><br>
 
 - [Multi Open API](#multi-open-api)
-  - [Getting Started](#getting-started)
   - [Environment Setup](#environment-setup)
+  - [Getting Started](#getting-started)
   - [IDE Setup](#ide-setup)
   - [Directory Structure](#directory-structure)
   - [Design System](#design-system)
+  - [Build and Deploy](#build-and-deploy)
+  - [Environment Variables](#environment-variables)
   - [Contributing](#contributing)
   - [Learn More](#learn-more)
+
+## Environment Setup
+1. [Node.js](https://nodejs.org/en/) - v14.16.0
+2. [NPM](https://www.npmjs.com/get-npm) - v7.7.6. Install with NodeJs
+3. [git](https://git-scm.com/)
+<br><br>
 
 ## Getting Started
 
@@ -31,11 +39,6 @@ You can start editing the page by modifying `src/pages/index.js`. The page auto-
 The `src/pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 <br><br>
 
-## Environment Setup
-1. [Node.js](https://nodejs.org/en/) - v14.16.0
-2. [NPM](https://www.npmjs.com/get-npm) - v7.7.6. Install with NodeJs
-3. [git](https://git-scm.com/)
-<br><br>
 ## IDE Setup
 Usage of [Visual Studio Code](https://code.visualstudio.com/download) as an IDE is highly recommended. Please ensure that the following VS Code extensions are installed:
 
@@ -60,6 +63,7 @@ Usage of [Visual Studio Code](https://code.visualstudio.com/download) as an IDE 
     |-- pages
     |-- styles
 |-- .babelrc
+|-- .dockerignore
 |-- .eslintrc
 |-- .gitignore
 |-- .prettierrc
@@ -81,6 +85,7 @@ Usage of [Visual Studio Code](https://code.visualstudio.com/download) as an IDE 
 8. `src/page-components`: Directory that contains all the various pages of the frontend app. This is used to make it flexible for developers to add page-specific functions/tests beside the page code itself without conflicting with NextJS.
 9.  `src/styles`: All global stylesheets and antd less variable overrides come in here.
 10. `.babelrc`: Babel config
+11. `.dockerignore`: Self explanatory
 11. `.eslintrc`: ESLint config. Please have ESLint installed in your IDE.
 12. `gitignore`: Self explanatory
 13. `prettierrc`: Prettier config. Please have Prettier installed in your IDE.
@@ -94,6 +99,24 @@ Usage of [Visual Studio Code](https://code.visualstudio.com/download) as an IDE 
     
 ## Design System
 The design system used is [Ant Design](https://ant.design/).
+
+## Build and Deploy
+
+### How to Run with Docker (without API)
+
+1. Create a `swagger-files` folder and add all your OpenAPI json files into this folder (Not needed if your OpenAPI is hosted online)
+2. Create a .env file and add the environment variables (see [Environment Variables](#environment-variables))
+
+```
+docker build -t multiopenapi .
+docker run -d -p 8080:80 multiopenapi
+```
+<br><br>
+
+## Environment Variables
+|Variable|Default value|Description|
+|--|--|--|
+|NEXT_PUBLIC_OPEN_APIS|[{"service": "petstore-v3","label": "Pet Store V3","url": "https://petstore3.swagger.io/api/v3/openapi.json"}]|List of OpenAPIs<br/>All your local OpenAPI files are accessible from `/static/swagger-files/`|
 
 ## Contributing
 Coming soon...

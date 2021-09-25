@@ -9,7 +9,5 @@ module.exports = withAntdLess({
     },
   },
   poweredByHeader: false,
-  future: {
-    webpack5: false,
-  },
+  webpack5: false
 });
